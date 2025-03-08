@@ -7,7 +7,7 @@ public class AppHook {
     @After(order = 2)
     public void resetThreadLocal() {
         System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ RESET");
-        PageFactory.resetThreadLocal();
+       // PageFactory.resetThreadLocal();
     }
 
 }

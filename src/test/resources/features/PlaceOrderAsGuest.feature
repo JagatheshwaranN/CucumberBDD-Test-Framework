@@ -6,7 +6,7 @@ Feature: Place Order
     And my billing details are
       | firstname | lastname | address_line      | city  | state | zipcode | email            |
       | Test      | User     | 5300 Spring Creek | Plano | Texas | 75024   | tester@gmail.com |
-    And I have a product in the cart
+    And I have a "Blue Shoes" in the cart
     And I'm on the checkout page
     When I provide the billing details
     And I place an order

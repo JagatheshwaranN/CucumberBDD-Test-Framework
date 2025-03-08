@@ -2,6 +2,7 @@ package com.qa.ctf.pages;
 
 import com.qa.ctf.base.PageComponent;
 import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.context.TestContext;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.objects.StorePageObject;
@@ -12,16 +13,16 @@ public class StorePage extends StorePageObject {
     private final VerificationHandler verificationHandler;
     private final PageComponent pageComponent;
     private final WaitHandler waitHandler;
-
     WebDriver driver;
 
-    public StorePage(WebDriver driver) {
-        super(driver);
+    public StorePage(TestContext testContext) {
+        super(testContext.getDriver());
+        PageFactory pageFactory = new PageFactory(testContext);
         System.out.println("Initializing StorePage with driver: " + driver);
-        this.driver = driver;
-        this.verificationHandler = PageFactory.getVerificationHelper();
-        this.pageComponent = PageFactory.getPageComponent();
-        this.waitHandler = PageFactory.getWaitHandler();
+
+        this.verificationHandler = pageFactory.getVerificationHelper();
+        this.pageComponent = pageFactory.getPageComponent();
+        this.waitHandler = pageFactory.getWaitHandler();
     }
 
     public void addToCart(String productName) {

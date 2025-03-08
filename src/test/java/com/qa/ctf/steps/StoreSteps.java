@@ -1,6 +1,5 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.apis.CartApi;
 import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
@@ -20,12 +19,9 @@ public class StoreSteps extends BaseSteps {
     public StoreSteps(AppContext appContext, TestContext testContext) {
         super(testContext);
         this.appContext = appContext;
-        if (testContext.getDriver() == null) {
-            throw new NullPointerException("Driver is not initialized");
-        }
         this.driver = testContext.getDriver();
         System.out.println("STORE STEPS DRIVER: " + this.driver);
-        this.storePage = PageFactory.getStorePage(this.driver);
+        this.storePage = pageFactory.getStorePage(testContext);
     }
 
     @Given("I'm on the Store page")
@@ -38,11 +34,12 @@ public class StoreSteps extends BaseSteps {
         storePage.addToCart(product.getProductName());
     }
 
-    @Given("I have a product in the cart")
-    public void i_have_a_product_in_the_cart() {
-        CartApi cartApi = new CartApi(appContext.cookies.getCookies());
-        cartApi.addToCart(1215, 1);
-        appContext.cookies.setCookies(cartApi.getCookies());
-        appContext.cookies.injectCookiesToBrowser(driver);
+    @Given("I have a {product} in the cart")
+    public void i_have_a_product_in_the_cart(Product product) {
+//        CartApi cartApi = new CartApi(appContext.cookies.getCookies());
+//        cartApi.addToCart(1215, 1);
+//        appContext.cookies.setCookies(cartApi.getCookies());
+//        appContext.cookies.injectCookiesToBrowser(driver);
+        storePage.addToCart(product.getProductName());
     }
 }

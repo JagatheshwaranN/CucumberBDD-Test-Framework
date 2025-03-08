@@ -20,13 +20,8 @@ public class CheckoutSteps extends  BaseSteps {
     public CheckoutSteps(AppContext appContext, TestContext testContext) {
         super(testContext); // Calls BaseStep constructor to initialize PageFactory
         this.appContext = appContext;
-
-        if (testContext.getDriver() == null) {
-            throw new NullPointerException("Driver is not initialized");
-        }
-
         this.driver = testContext.getDriver();
-        this.checkoutPage = PageFactory.getCheckoutPage(); // Fetch StorePage via PageFactory
+        this.checkoutPage = pageFactory.getCheckoutPage(testContext); // Fetch StorePage via PageFactory
     }
 
     @Given("I'm on the checkout page")

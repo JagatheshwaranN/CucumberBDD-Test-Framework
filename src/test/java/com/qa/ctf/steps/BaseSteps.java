@@ -8,8 +8,7 @@ public class BaseSteps {
     protected PageFactory pageFactory;
 
     public BaseSteps(TestContext testContext) {
-        pageFactory = new PageFactory();
-        pageFactory.setTestContext(testContext);
+        pageFactory = new PageFactory(testContext);
     }
 
 }

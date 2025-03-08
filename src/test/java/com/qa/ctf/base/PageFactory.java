@@ -6,148 +6,71 @@ import com.qa.ctf.pages.CartPage;
 import com.qa.ctf.pages.CheckoutPage;
 import com.qa.ctf.pages.StorePage;
 import com.qa.ctf.util.EncryptionManager;
-import org.openqa.selenium.WebDriver;
 
 public class PageFactory {
 
-    private static final ThreadLocal<TestContext> testContextThreadLocal = new ThreadLocal<>();
-
-    public void setTestContext(TestContext testContext) {
-        testContextThreadLocal.set(testContext);
+    public TestContext testContext;
+    public PageFactory(TestContext testContext) {
+        this.testContext = testContext;
     }
 
-    private static TestContext getTestContext() {
-        return testContextThreadLocal.get();
+    public StorePage storePage;
+    public CartPage cartPage;
+    public CheckoutPage checkoutPage;
+
+    private PageComponent pageComponent;
+
+    private DateTimeHandler datePickerHandler;
+
+    private DropDownHandler dropDownHandler;
+
+    private InteractionHandler interactionHandler;
+
+    private VerificationHandler verificationHelper;
+
+    private WaitHandler waitHandler;
+
+    private EncryptionManager encryptionManager;
+
+    public PageComponent getPageComponent() {
+        return (pageComponent == null) ? pageComponent = new PageComponent(testContext, getVerificationHelper()) : pageComponent;
     }
 
-//    private static WebDriver getDriver() {
-//        return getTestContext() != null ? getTestContext().getDriver() : null;
-//    }
-
-    private static WebDriver getDriver() {
-        TestContext testContext = getTestContext();
-        return (testContext != null) ? testContext.getDriver() : null;
+    public DateTimeHandler getDatePickerHandler() {
+        return (datePickerHandler == null) ? datePickerHandler = new DateTimeHandler(testContext, getVerificationHelper()) : datePickerHandler;
     }
 
-    private static final ThreadLocal<PageComponent> pageComponentThreadLocal =
-            ThreadLocal.withInitial(() -> new PageComponent(getTestContext(), getVerificationHelper()));
-
-    private static final ThreadLocal<DateTimeHandler> datePickerHandlerThreadLocal =
-            ThreadLocal.withInitial(() -> new DateTimeHandler(getTestContext(), getVerificationHelper()));
-
-    private static final ThreadLocal<DropDownHandler> dropDownHandlerThreadLocal =
-            ThreadLocal.withInitial(() -> new DropDownHandler(getTestContext(), getVerificationHelper()));
-
-    private static final ThreadLocal<InteractionHandler> interactionHandlerThreadLocal =
-            ThreadLocal.withInitial(() -> new InteractionHandler(getTestContext(), getVerificationHelper()));
-
-    private static final ThreadLocal<VerificationHandler> verificationHelperThreadLocal =
-            ThreadLocal.withInitial(() -> new VerificationHandler(getTestContext()));
-
-    private static final ThreadLocal<WaitHandler> waitHandlerThreadLocal =
-            ThreadLocal.withInitial(() -> new WaitHandler(getTestContext()));
-
-    private static final ThreadLocal<EncryptionManager> encryptionManagerThreadLocal =
-            ThreadLocal.withInitial(EncryptionManager::new);
-
-//    private static final ThreadLocal<StorePage> storePageThreadLocal =
-//            ThreadLocal.withInitial(() -> new StorePage(getDriver()));
-
-    private static final ThreadLocal<StorePage> storePageThreadLocal = new ThreadLocal<>();
-
-    private static final ThreadLocal<CartPage> cartPageThreadLocal =
-            ThreadLocal.withInitial(() -> new CartPage(getDriver()));
-
-    private static final ThreadLocal<CheckoutPage> checkoutPageThreadLocal =
-            ThreadLocal.withInitial(() -> new CheckoutPage(getDriver()));
-
-    public static VerificationHandler getVerificationHelper() {
-        return verificationHelperThreadLocal.get();
+    public DropDownHandler getDropDownHandler() {
+        return (dropDownHandler == null) ? dropDownHandler = new DropDownHandler(testContext, getVerificationHelper()) : dropDownHandler;
     }
 
-    public static PageComponent getPageComponent() {
-        return pageComponentThreadLocal.get();
+    public InteractionHandler getInteractionHandler() {
+        return (interactionHandler == null) ? interactionHandler = new InteractionHandler(testContext, getVerificationHelper()) : interactionHandler;
     }
 
-    public static DateTimeHandler getDatePickerHandler() {
-        return datePickerHandlerThreadLocal.get();
+    public VerificationHandler getVerificationHelper() {
+        return (verificationHelper == null) ? verificationHelper = new VerificationHandler(testContext) : verificationHelper;
     }
 
-    public static DropDownHandler getDropDownHandler() {
-        return dropDownHandlerThreadLocal.get();
+    public WaitHandler getWaitHandler() {
+        return (waitHandler == null) ? waitHandler = new WaitHandler(testContext) : waitHandler;
     }
 
-    public static InteractionHandler getInteractionHandler() {
-        return interactionHandlerThreadLocal.get();
+    public EncryptionManager getEncryptionManager() {
+        return (encryptionManager == null) ? encryptionManager = new EncryptionManager() : encryptionManager;
     }
 
-    public static WaitHandler getWaitHandler() {
-        return waitHandlerThreadLocal.get();
+
+    public StorePage getStorePage(TestContext testContext){
+        return (storePage == null) ? storePage = new StorePage(testContext) : storePage;
     }
 
-    public static EncryptionManager getEncryptionManager() {
-        return encryptionManagerThreadLocal.get();
+    public CartPage getCartPage(TestContext testContext){
+        return (cartPage == null) ? cartPage = new CartPage(testContext) : cartPage;
     }
 
-//    public static StorePage getStorePage() {
-//        return storePageThreadLocal.get();
-//    }
-
-//    public static StorePage getStorePage() {
-//        if (storePageThreadLocal.get() == null) {
-//            storePageThreadLocal.set(new StorePage(getTestContext().getDriver())); // Ensure a fresh driver per thread
-//        }
-//        return storePageThreadLocal.get();
-//    }
-
-//    public static StorePage getStorePage() {
-//        if (storePageThreadLocal.get() == null) {
-//            WebDriver driver = getDriver();
-//            if (driver != null) {
-//                storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver
-//            } else {
-//                throw new NullPointerException("Driver is not available in TestContext.");
-//            }
-//        }
-//        return storePageThreadLocal.get();
-//    }
-
-    // Working code.
-//    public static StorePage getStorePage(WebDriver driver) {
-//        //WebDriver driver = getDriver();
-//        if (driver == null) {
-//            throw new IllegalStateException("Driver is not initialized.");
-//        }
-//        storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver per thread
-//        return storePageThreadLocal.get();
-//    }
-
-    private static WebDriver lastUsedDriver = null;
-
-    public static StorePage getStorePage(WebDriver driver) {
-        if (driver == null) {
-            throw new IllegalStateException("Driver is not initialized.");
-        }
-
-        // Reset StorePage if the driver has changed
-        if (storePageThreadLocal.get() == null || driver != lastUsedDriver) {
-            storePageThreadLocal.set(new StorePage(driver));
-            lastUsedDriver = driver; // Track the latest driver
-        }
-
-        return storePageThreadLocal.get();
-    }
-
-    public static CartPage getCartPage() {
-        return cartPageThreadLocal.get();
-    }
-
-    public static CheckoutPage getCheckoutPage() {
-        return checkoutPageThreadLocal.get();
-    }
-
-    public static void resetThreadLocal() {
-        storePageThreadLocal.remove();
+    public CheckoutPage getCheckoutPage(TestContext testContext){
+        return (checkoutPage == null) ? checkoutPage = new CheckoutPage(testContext) : checkoutPage;
     }
 
 }

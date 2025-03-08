@@ -18,13 +18,8 @@ public class CustomerSteps extends BaseSteps {
     public CustomerSteps(AppContext appContext, TestContext testContext) {
         super(testContext); // Calls BaseStep constructor to initialize PageFactory
         this.appContext = appContext;
-
-        if (testContext.getDriver() == null) {
-            throw new NullPointerException("Driver is not initialized");
-        }
-
         this.driver = testContext.getDriver();
-        this.storePage = PageFactory.getStorePage(this.driver); // Fetch StorePage via PageFactory
+        this.storePage = pageFactory.getStorePage(testContext); // Fetch StorePage via PageFactory
     }
 
     @Given("I'm a guest user")

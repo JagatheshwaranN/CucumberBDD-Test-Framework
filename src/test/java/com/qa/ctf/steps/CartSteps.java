@@ -9,7 +9,7 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class CartSteps extends BaseSteps{
+public class CartSteps extends BaseSteps {
 
     private final WebDriver driver;
     private final CartPage cartPage;
@@ -18,13 +18,8 @@ public class CartSteps extends BaseSteps{
     public CartSteps(AppContext appContext, TestContext testContext) {
         super(testContext); // Calls BaseStep constructor to initialize PageFactory
         this.appContext = appContext;
-
-        if (testContext.getDriver() == null) {
-            throw new NullPointerException("Driver is not initialized");
-        }
-
         this.driver = testContext.getDriver();
-        this.cartPage = PageFactory.getCartPage(); // Fetch StorePage via PageFactory
+        this.cartPage = pageFactory.getCartPage(testContext); // Fetch StorePage via PageFactory
     }
 
     @Then("I should see {int} {product} in the cart")

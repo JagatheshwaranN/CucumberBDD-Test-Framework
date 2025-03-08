@@ -2,6 +2,7 @@ package com.qa.ctf.pages;
 
 import com.qa.ctf.base.PageComponent;
 import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.context.TestContext;
 import com.qa.ctf.data.BillingDetails;
 import com.qa.ctf.handler.DropDownHandler;
 import com.qa.ctf.handler.VerificationHandler;
@@ -14,11 +15,12 @@ public class CheckoutPage  extends CheckoutPageObject {
     private final PageComponent pageComponent;
     private final DropDownHandler dropDownHandler;
 
-    public CheckoutPage(WebDriver driver) {
-        super(driver);
-        this.verificationHandler = PageFactory.getVerificationHelper();
-        this.pageComponent = PageFactory.getPageComponent();
-        this.dropDownHandler = PageFactory.getDropDownHandler();
+    public CheckoutPage(TestContext testContext) {
+        super(testContext.getDriver());
+        PageFactory pageFactory = new PageFactory(testContext);
+        this.verificationHandler = pageFactory.getVerificationHelper();
+        this.pageComponent = pageFactory.getPageComponent();
+        this.dropDownHandler = pageFactory.getDropDownHandler();
     }
 
     public CheckoutPage enterBillingFirstName(String billingFirstName) {
