@@ -1,11 +1,11 @@
 package com.qa.ctf.objects;
 
-import com.qa.ctf.base.BasePage;
-import org.openqa.selenium.WebDriver;
+import com.qa.ctf.base.PageBase;
+import com.qa.ctf.context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CartPageObject extends BasePage {
+public class CartPageObject extends PageBase {
 
     @FindBy(css = "td[class='product-name'] a")
     protected WebElement productNameFld;
@@ -19,8 +19,8 @@ public class CartPageObject extends BasePage {
     protected WebElement proceedToCheckoutBtn;
     protected String proceedToCheckoutBtnLabel = "Proceed To Checkout Button";
 
-    public CartPageObject(WebDriver driver) {
-        super(driver);
+    public CartPageObject(TestContext testContext) {
+        super(testContext);
     }
 
     public WebElement getProductNameFld() {

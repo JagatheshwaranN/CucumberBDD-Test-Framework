@@ -14,8 +14,8 @@ public class StorePage extends StorePageObject {
     private final WaitHandler waitHandler;
 
     public StorePage(TestContext testContext) {
-        super(testContext.getDriver());
-        PageFactory pageFactory = new PageFactory(testContext);
+        super(testContext);
+        // PageFactory pageFactory = new PageFactory(testContext);
         this.verificationHandler = pageFactory.getVerificationHelper();
         this.pageComponent = pageFactory.getPageComponent();
         this.waitHandler = pageFactory.getWaitHandler();

@@ -1,11 +1,12 @@
 package com.qa.ctf.objects;
 
-import com.qa.ctf.base.BasePage;
+import com.qa.ctf.base.PageBase;
+import com.qa.ctf.context.TestContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class StorePageObject extends BasePage {
+public class StorePageObject extends PageBase {
 
     @FindBy(xpath = "//h1[text()='Store']")
     protected WebElement titleText;
@@ -18,8 +19,8 @@ public class StorePageObject extends BasePage {
     protected String addToCartBtn = "//a[contains(@aria-label,'%s')]";
     protected String addToCartBtnLabel = "Add To Cart Button";
 
-    public StorePageObject(WebDriver driver) {
-        super(driver);
+    public StorePageObject(TestContext testContext) {
+        super(testContext);
     }
 
     public WebElement getTitleText() {

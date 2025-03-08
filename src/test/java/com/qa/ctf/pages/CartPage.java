@@ -12,8 +12,8 @@ public class CartPage extends CartPageObject {
     private final PageComponent pageComponent;
 
     public CartPage(TestContext testContext) {
-        super(testContext.getDriver());
-        PageFactory pageFactory = new PageFactory(testContext);
+        super(testContext);
+        // PageFactory pageFactory = new PageFactory(testContext);
         this.verificationHandler = pageFactory.getVerificationHelper();
         this.pageComponent = pageFactory.getPageComponent();
     }

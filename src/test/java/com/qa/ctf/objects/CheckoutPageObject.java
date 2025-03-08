@@ -1,11 +1,11 @@
 package com.qa.ctf.objects;
 
-import com.qa.ctf.base.BasePage;
-import org.openqa.selenium.WebDriver;
+import com.qa.ctf.base.PageBase;
+import com.qa.ctf.context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckoutPageObject extends BasePage {
+public class CheckoutPageObject extends PageBase {
 
     @FindBy(id = "billing_first_name")
     protected WebElement billFirstNameFld;
@@ -44,8 +44,8 @@ public class CheckoutPageObject extends BasePage {
     protected String noticeTxtLabel = "Place Order Message";
 
 
-    public CheckoutPageObject(WebDriver driver) {
-        super(driver);
+    public CheckoutPageObject(TestContext testContext) {
+        super(testContext);
     }
 
     public WebElement getBillFirstNameFld() {

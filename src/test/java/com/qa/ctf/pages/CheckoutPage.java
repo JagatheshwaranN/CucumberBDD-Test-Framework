@@ -1,7 +1,6 @@
 package com.qa.ctf.pages;
 
 import com.qa.ctf.base.PageComponent;
-import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.data.BillingDetails;
 import com.qa.ctf.handler.DropDownHandler;
@@ -16,8 +15,8 @@ public class CheckoutPage  extends CheckoutPageObject {
     private final DropDownHandler dropDownHandler;
 
     public CheckoutPage(TestContext testContext) {
-        super(testContext.getDriver());
-        PageFactory pageFactory = new PageFactory(testContext);
+        super(testContext);
+        // PageFactory pageFactory = new PageFactory(testContext);
         this.verificationHandler = pageFactory.getVerificationHelper();
         this.pageComponent = pageFactory.getPageComponent();
         this.dropDownHandler = pageFactory.getDropDownHandler();
