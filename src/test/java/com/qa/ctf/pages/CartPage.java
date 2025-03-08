@@ -5,7 +5,6 @@ import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.objects.CartPageObject;
-import org.openqa.selenium.WebDriver;
 
 public class CartPage extends CartPageObject {
 

@@ -1,6 +1,5 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
@@ -8,20 +7,17 @@ import com.qa.ctf.pages.CheckoutPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CheckoutSteps extends  BaseSteps {
 
-    private final WebDriver driver;
     private final CheckoutPage checkoutPage;
     private final AppContext appContext;
 
     public CheckoutSteps(AppContext appContext, TestContext testContext) {
-        super(testContext); // Calls BaseStep constructor to initialize PageFactory
+        super(testContext);
         this.appContext = appContext;
-        this.driver = testContext.getDriver();
-        this.checkoutPage = pageFactory.getCheckoutPage(testContext); // Fetch StorePage via PageFactory
+        this.checkoutPage = pageFactory.getCheckoutPage(testContext);
     }
 
     @Given("I'm on the checkout page")

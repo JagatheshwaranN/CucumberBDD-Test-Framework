@@ -6,39 +6,26 @@ import com.qa.ctf.context.TestContext;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.objects.StorePageObject;
-import org.openqa.selenium.WebDriver;
 
 public class StorePage extends StorePageObject {
 
     private final VerificationHandler verificationHandler;
     private final PageComponent pageComponent;
     private final WaitHandler waitHandler;
-    WebDriver driver;
 
     public StorePage(TestContext testContext) {
         super(testContext.getDriver());
         PageFactory pageFactory = new PageFactory(testContext);
-        System.out.println("Initializing StorePage with driver: " + driver);
-
         this.verificationHandler = pageFactory.getVerificationHelper();
         this.pageComponent = pageFactory.getPageComponent();
         this.waitHandler = pageFactory.getWaitHandler();
     }
 
     public void addToCart(String productName) {
-        System.out.println("Product::: "+productName);
         verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
-        // PageComponent pageComponent1 = new PageComponent(driver);
         pageComponent.clickElement(getAddToCartBtn(), productName, getAddToCartBtnLabel());
         waitHandler.waitForElementVisible(getViewCartLink(), getViewCartLinkLabel());
         pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
-//        By addToCartBtn = By.cssSelector("a[aria-label='Add “" + productName + "” to your cart']");
-//        verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
-//        WebElement element = driver.findElement(By.xpath(String.format(getAddToCartBtn(), productName)));
-        //wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-//        element.click();
-//        waitHandler.waitForElementVisible(getViewCartLink(), getViewCartLinkLabel());
-//        pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
     }
 
 }

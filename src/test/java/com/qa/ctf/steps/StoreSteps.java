@@ -1,26 +1,18 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.constant.Endpoint;
-import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.data.Product;
 import com.qa.ctf.pages.StorePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 
 public class StoreSteps extends BaseSteps {
 
-    private final WebDriver driver;
     private final StorePage storePage;
-    private final AppContext appContext;
 
-    public StoreSteps(AppContext appContext, TestContext testContext) {
+    public StoreSteps(TestContext testContext) {
         super(testContext);
-        this.appContext = appContext;
-        this.driver = testContext.getDriver();
-        System.out.println("STORE STEPS DRIVER: " + this.driver);
         this.storePage = pageFactory.getStorePage(testContext);
     }
 
@@ -36,10 +28,7 @@ public class StoreSteps extends BaseSteps {
 
     @Given("I have a {product} in the cart")
     public void i_have_a_product_in_the_cart(Product product) {
-//        CartApi cartApi = new CartApi(appContext.cookies.getCookies());
-//        cartApi.addToCart(1215, 1);
-//        appContext.cookies.setCookies(cartApi.getCookies());
-//        appContext.cookies.injectCookiesToBrowser(driver);
         storePage.addToCart(product.getProductName());
     }
+
 }

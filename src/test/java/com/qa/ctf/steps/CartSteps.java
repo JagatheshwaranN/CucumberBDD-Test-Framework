@@ -1,25 +1,18 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.base.PageFactory;
-import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.data.Product;
 import com.qa.ctf.pages.CartPage;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CartSteps extends BaseSteps {
 
-    private final WebDriver driver;
     private final CartPage cartPage;
-    private final AppContext appContext;
 
-    public CartSteps(AppContext appContext, TestContext testContext) {
-        super(testContext); // Calls BaseStep constructor to initialize PageFactory
-        this.appContext = appContext;
-        this.driver = testContext.getDriver();
-        this.cartPage = pageFactory.getCartPage(testContext); // Fetch StorePage via PageFactory
+    public CartSteps(TestContext testContext) {
+        super(testContext);
+        this.cartPage = pageFactory.getCartPage(testContext);
     }
 
     @Then("I should see {int} {product} in the cart")

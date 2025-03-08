@@ -10,12 +10,15 @@ import com.qa.ctf.util.EncryptionManager;
 public class PageFactory {
 
     public TestContext testContext;
+
     public PageFactory(TestContext testContext) {
         this.testContext = testContext;
     }
 
     public StorePage storePage;
+
     public CartPage cartPage;
+
     public CheckoutPage checkoutPage;
 
     private PageComponent pageComponent;
@@ -59,7 +62,6 @@ public class PageFactory {
     public EncryptionManager getEncryptionManager() {
         return (encryptionManager == null) ? encryptionManager = new EncryptionManager() : encryptionManager;
     }
-
 
     public StorePage getStorePage(TestContext testContext){
         return (storePage == null) ? storePage = new StorePage(testContext) : storePage;

@@ -7,8 +7,8 @@ import com.qa.ctf.data.BillingDetails;
 import com.qa.ctf.handler.DropDownHandler;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.objects.CheckoutPageObject;
-import org.openqa.selenium.WebDriver;
 
+@SuppressWarnings("UnusedReturnValue")
 public class CheckoutPage  extends CheckoutPageObject {
 
     private final VerificationHandler verificationHandler;
