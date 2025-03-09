@@ -52,7 +52,7 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class FileReader {
 
@@ -60,7 +60,7 @@ public class FileReader {
     private static final Logger log = LogManager.getLogger(FileReader.class);
 
     // Properties object to store key-value pairs from a properties file
-    public static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
 
     /**
      * Loads the configuration property file into the {@code properties} object.

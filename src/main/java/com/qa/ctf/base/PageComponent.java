@@ -66,14 +66,14 @@ public class PageComponent extends Page implements ElementActions {
     // Logger instance for the PageComponent class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(PageComponent.class);
 
-    // TestContext instance to manage shared test data and dependencies
-    private TestContext testContext;
-
     // WebDriver instance to interact with web elements on the web pages
-    private WebDriver driver;
+    private final WebDriver driver;
+
+    // TestContext instance to manage shared test data and dependencies
+    private final TestContext testContext;
 
     // Instance of VerificationHandler to handle verification actions, likely for validating elements on the page
-    private VerificationHandler verificationHandler;
+    private final VerificationHandler verificationHandler;
 
     // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
@@ -86,10 +86,6 @@ public class PageComponent extends Page implements ElementActions {
 
     // Static string variable to store an object key
     public static String objKey;
-
-    public PageComponent(WebDriver driver) {
-        this.driver = driver;
-    }
 
     /**
      * Constructs a PageComponent instance and initializes it with the provided TestContext.
@@ -114,7 +110,6 @@ public class PageComponent extends Page implements ElementActions {
         this.driver = testContext.getDriver();
         this.verificationHandler = verificationHandler;
     }
-
 
     /**
      * Retrieves the title of the current page.

@@ -1,7 +1,5 @@
 package com.qa.ctf.context;
 
-import com.qa.ctf.factory.DriverFactory;
-import com.qa.ctf.util.FileReader;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -16,18 +14,38 @@ import org.openqa.selenium.WebDriver;
  */
 public class TestContext {
 
-    /** WebDriver instance used for interacting with web elements in test execution. */
+    // WebDriver instance used for interacting with web elements in test execution.
     public WebDriver driver;
 
+    /**
+     * Retrieves the WebDriver instance.
+     * <p>
+     * This method returns the current WebDriver instance. If the driver is not
+     * initialized, it throws a NullPointerException.
+     * </p>
+     *
+     * @return The WebDriver instance.
+     * @throws NullPointerException if the driver is not initialized.
+     */
     public WebDriver getDriver() {
         if (this.driver == null) {
-            throw new NullPointerException("Driver is not initialized for this scenario!");
+            throw new NullPointerException("Driver is not initialized.");
         }
         return this.driver;
     }
 
+    /**
+     * Sets the WebDriver instance.
+     * <p>
+     * This method assigns the provided WebDriver instance to the class-level
+     * driver variable.
+     * </p>
+     *
+     * @param driver The WebDriver instance to be set.
+     */
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
+
 }
 

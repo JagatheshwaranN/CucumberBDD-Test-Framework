@@ -58,15 +58,12 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.2
+ * @version 1.3
  */
 public class DriverFactory extends BrowserFactory {
 
     // Logger instance for the DriverFactory class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(DriverFactory.class);
-
-    // WebDriver instance to interact with web elements on the web pages
-    private WebDriver driver;
 
     // Instance of ChromeOptions to configure Chrome-specific WebDriver options
     private ChromeOptions gcOptions;
@@ -186,6 +183,14 @@ public class DriverFactory extends BrowserFactory {
         };
     }
 
+    /**
+     * Quits the WebDriver instance and removes it from the thread-local storage.
+     * <p>
+     * This method checks if a WebDriver instance exists in the thread-local storage.
+     * If present, it quits the driver and removes it from the thread-local variable
+     * to free up resources.
+     * </p>
+     */
     public static void quitDriver() {
         if (driverLocal.get() != null) {
             driverLocal.get().quit();

@@ -1,6 +1,5 @@
 package com.qa.ctf.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**

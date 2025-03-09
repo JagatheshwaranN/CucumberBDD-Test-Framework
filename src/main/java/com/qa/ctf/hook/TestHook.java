@@ -17,6 +17,7 @@ import java.io.File;
 
 import static com.qa.ctf.constant.TestConstants.*;
 
+
 /**
  * The TestHooks class provides hooks for test lifecycle management in Cucumber
  * tests, including actions to perform before and after each scenario.
@@ -56,18 +57,18 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
-public class TestHooks {
+public class TestHook {
 
     // Logger instance for the TestHooks class to enable logging during the execution
-    private static final Logger log = LogManager.getLogger(TestHooks.class);
+    private static final Logger log = LogManager.getLogger(TestHook.class);
 
     // WebDriver instance to interact with web elements on the web pages
     private WebDriver driver;
 
     // TestContext instance to manage shared test data and dependencies
-    public TestContext testContext;
+    private final TestContext testContext;
 
     /**
      * Constructs a TestHooks instance and initializes it with the provided TestContext.
@@ -79,7 +80,7 @@ public class TestHooks {
      * @param testContext The TestContext instance that holds shared test data and
      *                    dependencies.
      */
-    public TestHooks(TestContext testContext) {
+    public TestHook(TestContext testContext) {
         this.testContext = testContext;
     }
 
@@ -99,14 +100,11 @@ public class TestHooks {
         log.info("BEFORE SCENARIO - THREAD ID: {} & SCENARIO NAME: {}",
                 Thread.currentThread().threadId(), scenario.getName());
         try {
-            // FileUtils.cleanDirectory(new File(SCREENSHOT_PATH));
+            FileUtils.cleanDirectory(new File(SNAPSHOT_PATH));
             FileReader.loadPropertyFile();
             DriverFactory.getInstance().initializeDriver();
-            log.info("DRIVER FROM FACTORY: {}",DriverFactory.getInstance().getDriver());
             this.driver = DriverFactory.getInstance().getDriver();
-            log.info("DRIVER IN HOOK: {}",this.driver);
             testContext.setDriver(this.driver);
-            log.info("TestContext DRIVER: {}",testContext.getDriver());
         } catch (Exception ex) {
             log.error("Error initializing WebDriver: {}", ex.getMessage(), ex);
             throw new ExceptionHub("WebDriver initialization failed", ex);
