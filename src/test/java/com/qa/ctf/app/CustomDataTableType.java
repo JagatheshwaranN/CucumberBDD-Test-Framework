@@ -19,4 +19,16 @@ public class CustomDataTableType {
                 entry.get("email")
         );
     }
+
+    public BillingDetails billingInfoDetails(Map<String, String> entry) {
+        return new BillingDetails(
+                entry.get("firstname"),
+                entry.get("lastname"),
+                entry.get("address_line"),
+                entry.get("city"),
+                entry.get("state"),
+                entry.get("zipcode"),
+                entry.get("email")
+        );
+    }
 }

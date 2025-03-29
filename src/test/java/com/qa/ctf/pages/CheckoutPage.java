@@ -16,7 +16,6 @@ public class CheckoutPage  extends CheckoutPageObject {
 
     public CheckoutPage(TestContext testContext) {
         super(testContext);
-        // PageFactory pageFactory = new PageFactory(testContext);
         this.verificationHandler = pageFactory.getVerificationHelper();
         this.pageComponent = pageFactory.getPageComponent();
         this.dropDownHandler = pageFactory.getDropDownHandler();
