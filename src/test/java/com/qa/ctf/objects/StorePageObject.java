@@ -2,7 +2,6 @@ package com.qa.ctf.objects;
 
 import com.qa.ctf.base.PageBase;
 import com.qa.ctf.context.TestContext;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

@@ -100,7 +100,7 @@ public class TestHook {
         log.info("BEFORE SCENARIO - THREAD ID: {} & SCENARIO NAME: {}",
                 Thread.currentThread().threadId(), scenario.getName());
         try {
-            FileUtils.cleanDirectory(new File(SNAPSHOT_PATH));
+            FileUtils.cleanDirectory(new File(CWD + SNAPSHOT_PATH));
             FileReader.loadPropertyFile();
             DriverFactory.getInstance().initializeDriver();
             this.driver = DriverFactory.getInstance().getDriver();

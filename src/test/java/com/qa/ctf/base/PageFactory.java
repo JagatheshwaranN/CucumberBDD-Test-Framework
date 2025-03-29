@@ -2,9 +2,7 @@ package com.qa.ctf.base;
 
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.handler.*;
-import com.qa.ctf.pages.CartPage;
-import com.qa.ctf.pages.CheckoutPage;
-import com.qa.ctf.pages.StorePage;
+import com.qa.ctf.pages.*;
 import com.qa.ctf.util.EncryptionManager;
 
 public class PageFactory {
@@ -14,6 +12,10 @@ public class PageFactory {
     public PageFactory(TestContext testContext) {
         this.testContext = testContext;
     }
+
+    public LoginPage loginPage;
+
+    public AccountPage accountPage;
 
     public StorePage storePage;
 
@@ -61,6 +63,14 @@ public class PageFactory {
 
     public EncryptionManager getEncryptionManager() {
         return (encryptionManager == null) ? encryptionManager = new EncryptionManager() : encryptionManager;
+    }
+
+    public LoginPage getLoginPage(TestContext testContext){
+        return (loginPage == null) ? loginPage = new LoginPage(testContext) : loginPage;
+    }
+
+    public AccountPage getAccountPage(TestContext testContext){
+        return (accountPage == null) ? accountPage = new AccountPage(testContext) : accountPage;
     }
 
     public StorePage getStorePage(TestContext testContext){
