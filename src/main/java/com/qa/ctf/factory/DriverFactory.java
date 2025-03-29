@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 
 import com.qa.ctf.constant.BrowserType;
+import com.qa.ctf.util.ExcelReader;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -78,7 +79,7 @@ public class DriverFactory extends BrowserFactory {
     private final RunFactory runFactory;
 
     // Static instance of ExcelReader to read data from Excel files for test execution
-    //public static ExcelReader excelReader;
+    public static ExcelReader excelReader;
 
     // ThreadLocal variable to store WebDriver instance specific to the current thread (for multithreaded execution)
     private static final ThreadLocal<WebDriver> driverLocal = new ThreadLocal<>();
@@ -94,7 +95,7 @@ public class DriverFactory extends BrowserFactory {
      */
     public DriverFactory() {
         this.runFactory = new RunFactory();
-        //excelReader = new ExcelReader(CWD + EXCEL_FILE_PATH);
+        excelReader = new ExcelReader(CWD + EXCEL_FILE_PATH);
     }
 
     /**

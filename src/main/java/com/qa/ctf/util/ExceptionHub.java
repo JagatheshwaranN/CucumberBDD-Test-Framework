@@ -152,10 +152,10 @@ public class ExceptionHub extends RuntimeException {
          * Constructs the exception with a message indicating that the specified configuration type
          * is not valid and needs to be checked.
          *
-         * @param config The name of the invalid configuration type.
+         * @param elementLabel The name of the invalid configuration type.
          */
-        public ConfigTypeException(String config) {
-            super(String.format("The '%s' config type is not valid. Please check the configuration.", config));
+        public ConfigTypeException(String elementLabel) {
+            super(String.format("The '%s' type is not valid. Please check the configuration.", elementLabel));
         }
 
         /**
@@ -166,7 +166,7 @@ public class ExceptionHub extends RuntimeException {
          * @param cause        The cause of the exception.
          */
         public ConfigTypeException(String elementLabel, Throwable cause) {
-            super(String.format("The '%s' config file is not found. Please check the configuration.", elementLabel), cause);
+            super(String.format("The '%s' file is not found. Please check the configuration.", elementLabel), cause);
         }
     }
 

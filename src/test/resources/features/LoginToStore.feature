@@ -4,9 +4,9 @@
     @login
     Scenario Outline: Verify user login to store
       Given I'm on the Store page
-      When I enter "<username>" and "<password>"
+      When I enter login details from given sheet "<sheetName>" and row <rowNumber>
       And click on login button
       Then Account dashboard page should open
       Examples:
-        | username       | password    |
-        | Learn Everyday | Allowme@123 |
+        | sheetName | rowNumber |
+        | LoginPage | 0         |
