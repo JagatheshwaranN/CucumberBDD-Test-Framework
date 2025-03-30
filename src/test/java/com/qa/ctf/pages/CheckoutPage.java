@@ -2,7 +2,7 @@ package com.qa.ctf.pages;
 
 import com.qa.ctf.base.PageComponent;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.data.BillingDetails;
+import com.qa.ctf.domain.BillingDetails;
 import com.qa.ctf.handler.DropDownHandler;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.objects.CheckoutPageObject;

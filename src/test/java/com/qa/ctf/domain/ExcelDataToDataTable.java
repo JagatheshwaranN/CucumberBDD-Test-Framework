@@ -1,4 +1,4 @@
-package com.qa.ctf.data;
+package com.qa.ctf.domain;
 
 import com.qa.ctf.factory.DriverFactory;
 import io.cucumber.datatable.DataTable;

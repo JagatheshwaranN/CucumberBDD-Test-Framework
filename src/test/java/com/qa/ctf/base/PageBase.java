@@ -18,13 +18,9 @@ public class PageBase {
 
     protected WebDriverWait wait;
 
-    protected  com.qa.ctf.base.PageFactory pageFactory;
+    protected com.qa.ctf.base.PageFactory pageFactory;
 
     public PageBase(TestContext testContext) {
-        //System.out.println("Initializing BasePage with driver: " + driver);
-//        if (driver == null) {
-//            throw new IllegalStateException("Driver is not initialized in TestContext.");
-//        }
         pageFactory = new com.qa.ctf.base.PageFactory(testContext);
         this.driver = testContext.getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -33,17 +29,16 @@ public class PageBase {
 
 
     public void load(String endpoint) {
-        System.out.println("BASE DRIVER : "+driver);
-        driver.get(FileReader.fetchDataFromPropFile("BaseURL") +endpoint);
+        driver.get(FileReader.fetchDataFromPropFile("BaseURL") + endpoint);
     }
 
     public void waitForOverlayToDisappear(By overlay) {
         List<WebElement> overlays = driver.findElements(overlay);
-        System.out.println("OVERLAY SIZE: "+ overlays.size());
-        if(!overlays.isEmpty()) {
+        System.out.println("OVERLAY SIZE: " + overlays.size());
+        if (!overlays.isEmpty()) {
             wait.until(ExpectedConditions.invisibilityOfAllElements(overlays));
             System.out.println("OVERLAYS INVISIBLE");
-        }else{
+        } else {
             System.out.println("OVERLAYS NOT FOUND");
         }
     }

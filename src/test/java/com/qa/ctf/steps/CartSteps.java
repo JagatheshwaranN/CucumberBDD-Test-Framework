@@ -1,7 +1,7 @@
 package com.qa.ctf.steps;
 
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.data.Product;
+import com.qa.ctf.domain.Product;
 import com.qa.ctf.pages.CartPage;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;

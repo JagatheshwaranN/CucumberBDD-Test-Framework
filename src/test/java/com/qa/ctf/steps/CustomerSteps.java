@@ -3,8 +3,8 @@ package com.qa.ctf.steps;
 import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.data.BillingDetails;
-import com.qa.ctf.data.ExcelDataToDataTable;
+import com.qa.ctf.domain.BillingDetails;
+import com.qa.ctf.domain.ExcelDataToDataTable;
 import com.qa.ctf.pages.StorePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -18,7 +18,7 @@ public class CustomerSteps extends BaseSteps {
     private final StorePage storePage;
     private final AppContext appContext;
 
-    public CustomerSteps(AppContext appContext, TestContext testContext) {
+    public CustomerSteps(TestContext testContext, AppContext appContext) {
         super(testContext);
         this.appContext = appContext;
         this.storePage = pageFactory.getStorePage(testContext);

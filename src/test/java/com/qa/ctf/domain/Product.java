@@ -1,4 +1,4 @@
-package com.qa.ctf.data;
+package com.qa.ctf.domain;
 
 public class Product {
 

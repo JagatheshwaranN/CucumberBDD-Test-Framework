@@ -1,18 +1,25 @@
 package com.qa.ctf.steps;
 
 import com.qa.ctf.constant.Endpoint;
+import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.data.Product;
+import com.qa.ctf.domain.Product;
 import com.qa.ctf.pages.StorePage;
+import com.qa.ctf.service.CartService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 public class StoreSteps extends BaseSteps {
 
+    private final TestContext testContext;
+    private final AppContext appContext;
+
     private final StorePage storePage;
 
-    public StoreSteps(TestContext testContext) {
+    public StoreSteps(TestContext testContext, AppContext appContext) {
         super(testContext);
+        this.testContext = testContext;
+        this.appContext = appContext;
         this.storePage = pageFactory.getStorePage(testContext);
     }
 
@@ -29,6 +36,14 @@ public class StoreSteps extends BaseSteps {
     @Given("I have a {product} in the cart")
     public void i_have_a_product_in_the_cart(Product product) {
         storePage.addToCart(product.getProductName());
+    }
+
+    @Given("I have a {int} in the cart via service")
+    public void i_have_a_product_in_the_cart_service(Integer product) {
+        CartService cartService = new CartService(appContext.cookies.getCookies());
+        cartService.addToCartUsingService(product, 1);
+        appContext.cookies.setCookies(cartService.getCookies());
+        appContext.cookies.injectCookiesToBrowser(testContext);
     }
 
 }

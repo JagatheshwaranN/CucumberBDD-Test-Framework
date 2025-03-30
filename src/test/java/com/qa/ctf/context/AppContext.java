@@ -1,12 +1,11 @@
 package com.qa.ctf.context;
 
 import com.qa.ctf.app.Cookies;
-import com.qa.ctf.data.BillingDetails;
+import com.qa.ctf.domain.BillingDetails;
 
 public class AppContext {
 
     public BillingDetails billingDetails;
-    //public BillingDetails billingInfoDetails;
     public Cookies cookies;
 
     public AppContext() {

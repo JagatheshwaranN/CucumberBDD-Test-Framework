@@ -9,6 +9,9 @@ public class PageFactory {
 
     public TestContext testContext;
 
+    public PageFactory() {
+    }
+
     public PageFactory(TestContext testContext) {
         this.testContext = testContext;
     }
@@ -25,6 +28,8 @@ public class PageFactory {
 
     private PageComponent pageComponent;
 
+    private BrowserHandler browserHandler;
+
     private DateTimeHandler datePickerHandler;
 
     private DropDownHandler dropDownHandler;
@@ -39,6 +44,10 @@ public class PageFactory {
 
     public PageComponent getPageComponent() {
         return (pageComponent == null) ? pageComponent = new PageComponent(testContext, getVerificationHelper()) : pageComponent;
+    }
+
+    public BrowserHandler getBrowserHandler() {
+        return (browserHandler == null) ? browserHandler = new BrowserHandler(testContext) : browserHandler;
     }
 
     public DateTimeHandler getDatePickerHandler() {

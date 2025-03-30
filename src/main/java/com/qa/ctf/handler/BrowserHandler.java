@@ -298,4 +298,35 @@ public class BrowserHandler {
         }
     }
 
+    /**
+     * Adds a cookie to the current browser session.
+     * <p>
+     * This method adds a specified cookie to the browser. The cookie should have
+     * a valid name and value, and it should be applicable to the current domain.
+     * If adding the cookie fails due to an invalid domain, security restrictions,
+     * or session issues, a {@link ExceptionHub} is thrown.
+     * </p>
+     *
+     * @param cookie The {@link org.openqa.selenium.Cookie} object to be added.
+     * @throws ExceptionHub If the cookie cannot be added.
+     */
+    public void addCookie(Cookie cookie) {
+        try {
+            if (cookie == null) {
+                throw new IllegalArgumentException("Cookie cannot be null.");
+            }
+            driver.manage().addCookie(cookie);
+            log.info("Successfully added cookie: {}", cookie);
+        } catch (IllegalArgumentException ex) {
+            log.error("Invalid cookie provided: {}", ex.getMessage());
+            throw ex; // Rethrowing the exception for better debugging
+        } catch (WebDriverException ex) {
+            log.error("Failed to add cookie due to WebDriver exception: {}", ex.getMessage());
+            throw new ExceptionHub("Failed to add cookie: " + ex.getMessage(), ex);
+        } catch (Exception ex) {
+            log.error("Unexpected error while adding cookie: {}", ex.getMessage());
+            throw new ExceptionHub("Unexpected error while adding cookie.", ex);
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.qa.ctf.app;
 
-import com.qa.ctf.data.Product;
+import com.qa.ctf.domain.Product;
 import io.cucumber.java.ParameterType;
 
 public class CustomParameterType {

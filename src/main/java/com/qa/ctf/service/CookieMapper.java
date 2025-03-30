@@ -1,4 +1,4 @@
-package com.qa.ctf.util;
+package com.qa.ctf.service;
 
 import io.restassured.http.Cookies;
 import org.openqa.selenium.Cookie;
@@ -6,7 +6,7 @@ import org.openqa.selenium.Cookie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CookieUtil {
+public class CookieMapper {
 
     public List<Cookie> convertRestAssuredCookieToSelenium(Cookies cookies) {
 

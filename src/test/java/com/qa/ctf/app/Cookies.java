@@ -1,12 +1,18 @@
 package com.qa.ctf.app;
 
-import com.qa.ctf.util.CookieUtil;
+import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.context.TestContext;
+import com.qa.ctf.service.CookieMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
 public class Cookies {
+
+    private static final Logger log = LogManager.getLogger(Cookies.class);
 
     private io.restassured.http.Cookies cookies;
 
@@ -18,15 +24,16 @@ public class Cookies {
         this.cookies = cookies;
     }
 
-    public void injectCookiesToBrowser(WebDriver driver) {
-        List<Cookie> seleniumCookies = new CookieUtil().convertRestAssuredCookieToSelenium(cookies);
-        int i = 0;
+    public void injectCookiesToBrowser(TestContext testContext) {
+        PageFactory pageFactory = new PageFactory(testContext);
+        List<Cookie> seleniumCookies = new CookieMapper().convertRestAssuredCookieToSelenium(cookies);
+        int count = 0;
         for (Cookie cookie : seleniumCookies) {
-            System.out.println("COUNTER " + i + ": " + cookie.toString());
-            driver.manage().addCookie(cookie);
-            i++;
+            log.info("Cookie {}: {}", count, cookie.toString());
+            pageFactory.getBrowserHandler().addCookie(cookie);
+            count++;
         }
-        driver.navigate().refresh();
+        pageFactory.getBrowserHandler().refresh();
     }
 
 }
