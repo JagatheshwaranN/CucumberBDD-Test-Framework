@@ -6,6 +6,7 @@ import com.qa.ctf.data.BillingDetails;
 public class AppContext {
 
     public BillingDetails billingDetails;
+    //public BillingDetails billingInfoDetails;
     public Cookies cookies;
 
     public AppContext() {
