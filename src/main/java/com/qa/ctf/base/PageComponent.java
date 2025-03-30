@@ -7,14 +7,15 @@ import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The PageComponent class serves as a foundational class for interacting with
@@ -59,7 +60,7 @@ import java.util.Map;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.3
+ * @version 1.4
  */
 public class PageComponent extends Page implements ElementActions {
 
@@ -238,9 +239,9 @@ public class PageComponent extends Page implements ElementActions {
      */
     @Override
     public void clickElement(WebElement element, String elementLabel) {
-      //  if (verificationHandler.isElementDisplayed(element, elementLabel)) {
-            element.click();
-            log.info("Clicked the '{}' element", elementLabel);
+        //  if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+        element.click();
+        log.info("Clicked the '{}' element", elementLabel);
         //}
     }
 
@@ -266,8 +267,8 @@ public class PageComponent extends Page implements ElementActions {
             By locatorObj = By.xpath(String.format(locator, value));
             WebElement element = generateElement(locatorObj, elementLabel);
             //if (verificationHandler.isElementDisplayed(element, elementLabel)) {
-                element.click();
-                log.info("Clicked the '{}' element", elementLabel);
+            element.click();
+            log.info("Clicked the '{}' element", elementLabel);
             //}
         } catch (ElementClickInterceptedException ex) {
             log.error("Failed to click the '{}' element", elementLabel, ex);
@@ -317,6 +318,42 @@ public class PageComponent extends Page implements ElementActions {
                 }
                 log.info("Entered '{}' text into the '{}' element", text, elementLabel);
             }
+        }
+    }
+
+    /**
+     * Validates whether the actual text matches the expected pattern, handling dynamic
+     * content. The expected pattern can contain placeholders like (.*?) to match any
+     * value dynamically.
+     *
+     * @param actual   The actual text retrieved from the application under test.
+     * @param expected The expected pattern, where (.*?) is treated as a wildcard.
+     * @throws AssertionError If the actual text does not match the expected pattern.
+     */
+    public void assertTextMatches(String actual, String expected) {
+        Objects.requireNonNull(actual, "Actual text must not be null.");
+        Objects.requireNonNull(expected, "Expected pattern must not be null.");
+
+        String cleanActual = actual.replaceAll("\\s+", " ").trim();
+        String cleanExpected = expected.replaceAll("\\s+", " ").trim();
+
+        String protectedPattern = cleanExpected.replace("(.*?)", "___DYNAMIC___");
+        String regex = protectedPattern
+                .replace(".", "\\.")
+                .replace("?", "\\?")
+                .replace("(", "\\(")
+                .replace(")", "\\)")
+                // Add other special characters if needed
+                .replace("___DYNAMIC___", "(.+)");  // Restore our dynamic pattern
+
+        if (Pattern.compile(regex).matcher(cleanActual).matches()) {
+            log.info("Error Message Validation passed!");
+        } else {
+            log.error("Error Message Validation failed!");
+            Assert.fail(String.format(
+                    "Error Message Validation failed!\nExpected: '%s'\nActual: '%s'\nRegex used: '%s'",
+                    cleanExpected, cleanActual, regex
+            ));
         }
     }
 

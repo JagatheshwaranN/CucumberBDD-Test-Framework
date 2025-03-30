@@ -4,7 +4,6 @@ import com.qa.ctf.context.TestContext;
 import com.qa.ctf.factory.DriverFactory;
 import com.qa.ctf.pages.AccountPage;
 import com.qa.ctf.pages.LoginPage;
-import com.qa.ctf.pages.StorePage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -44,6 +43,11 @@ public class LoginSteps extends BaseSteps {
     public void account_dashboard_page_should_open() {
         accountPage.verifyAccountHeader();
         accountPage.logoutFromStore();
+    }
+
+    @Then("Login {string} error message should display")
+    public void login_error_message_should_display(String errorType) {
+        loginPage.assertErrorMessage(errorType);
     }
 
 }

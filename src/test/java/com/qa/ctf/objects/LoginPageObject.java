@@ -31,6 +31,10 @@ public class LoginPageObject extends PageBase {
     protected WebElement loginBtn;
     protected String loginBtnLabel = "Login Button";
 
+    @FindBy(css = "ul[class*='error'] li")
+    protected WebElement loginErrMsg;
+    protected String loginErrMsgLabel = "Login Error Message";
+
     public WebElement getAccountNavBar() {
         return accountNavBar;
     }
@@ -69,6 +73,14 @@ public class LoginPageObject extends PageBase {
 
     public String getLoginBtnLabel() {
         return loginBtnLabel;
+    }
+
+    public WebElement getLoginErrMsg() {
+        return loginErrMsg;
+    }
+
+    public String getLoginErrMsgLabel() {
+        return loginErrMsgLabel;
     }
 
 }

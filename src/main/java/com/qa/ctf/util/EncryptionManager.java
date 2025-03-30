@@ -170,4 +170,10 @@ public class EncryptionManager {
         return new SecretKeySpec(keyBytes, 0, keyBytes.length, algorithm);
     }
 
+    public static void main(String[] args) {
+        String encryptedData = new EncryptionManager().encryptData("Allowme");
+        System.out.println(encryptedData);
+        System.out.println(new EncryptionManager().decryptData(encryptedData));
+    }
+
 }
