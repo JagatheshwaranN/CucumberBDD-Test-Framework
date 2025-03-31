@@ -43,7 +43,8 @@ public class CartPageObject extends PageBase {
     /**
      * Constructs a {@code CartPageObject} instance with the given test context.
      *
-     * @param testContext The test context containing information for managing the state of the test.
+     * @param testContext The test context containing information for managing the
+     *                    state of the test.
      */
     public CartPageObject(TestContext testContext) {
         super(testContext);
