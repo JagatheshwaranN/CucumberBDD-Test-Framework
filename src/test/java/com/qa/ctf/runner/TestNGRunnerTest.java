@@ -12,7 +12,10 @@ import org.testng.annotations.DataProvider;
                 "html:target/cucumber/report/cucumber.html",
                 "json:target/cucumber/report/report.json",
                 "junit:target/cucumber/report/report.xml",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "rerun:target/failedRerun.txt",
+                "timeline:test-output-thread/"
+        },
         publish = true,
         monochrome = true)
 public class TestNGRunnerTest extends AbstractTestNGCucumberTests {

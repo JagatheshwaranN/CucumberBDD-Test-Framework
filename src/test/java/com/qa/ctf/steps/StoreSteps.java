@@ -30,12 +30,12 @@ public class StoreSteps extends BaseSteps {
 
     @When("I add a {product} to the cart")
     public void i_add_a_to_the_cart(Product product) {
-        storePage.addToCart(product.getProductName());
+        storePage.addToCart(product.productName());
     }
 
     @Given("I have a {product} in the cart")
     public void i_have_a_product_in_the_cart(Product product) {
-        storePage.addToCart(product.getProductName());
+        storePage.addToCart(product.productName());
     }
 
     @Given("I have a {int} in the cart via service")

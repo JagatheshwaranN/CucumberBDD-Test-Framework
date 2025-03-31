@@ -17,7 +17,7 @@ public class CartSteps extends BaseSteps {
 
     @Then("I should see {int} {product} in the cart")
     public void i_should_see_in_the_cart(Integer quantity, Product product) {
-        Assert.assertEquals(product.getProductName(), cartPage.getProductName());
+        Assert.assertEquals(product.productName(), cartPage.getProductName());
         Assert.assertEquals(quantity, cartPage.getProductQuantity());
     }
 

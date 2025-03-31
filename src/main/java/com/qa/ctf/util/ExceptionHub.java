@@ -179,7 +179,7 @@ public class ExceptionHub extends RuntimeException {
          * @param data The invalid data value that caused the exception.
          */
         public InvalidDataException(String data) {
-            super(String.format("The '%s' value is not valid. Please check the data.", data));
+            super(String.format(data));
         }
 
         /**
@@ -190,7 +190,7 @@ public class ExceptionHub extends RuntimeException {
          * @param cause The cause of the exception.
          */
         public InvalidDataException(String data, Throwable cause) {
-            super(String.format("The '%s' value is not found in the configuration file.", data), cause);
+            super(data, cause);
         }
     }
 

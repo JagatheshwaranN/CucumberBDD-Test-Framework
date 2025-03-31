@@ -57,13 +57,13 @@ public class CheckoutPage  extends CheckoutPageObject {
     }
 
     public CheckoutPage setBillingDetails(BillingDetails billingDetails) {
-        return enterBillingFirstName(billingDetails.getBillingFirstName())
-                .enterBillingLastName(billingDetails.getBillingLastName())
-                .enterBillingAddress(billingDetails.getBillingAddressLine())
-                .enterBillingCity(billingDetails.getBillingCity())
-                .selectBillingState(billingDetails.getBillingState())
-                .enterBillingZipcode(billingDetails.getBillingZipcode())
-                .enterBillingEmail(billingDetails.getBillingEmail());
+        return enterBillingFirstName(billingDetails.billingFirstName())
+                .enterBillingLastName(billingDetails.billingLastName())
+                .enterBillingAddress(billingDetails.billingAddressLine())
+                .enterBillingCity(billingDetails.billingCity())
+                .selectBillingState(billingDetails.billingState())
+                .enterBillingZipcode(billingDetails.billingZipcode())
+                .enterBillingEmail(billingDetails.billingEmail());
     }
 
     public CheckoutPage placeOrder() {

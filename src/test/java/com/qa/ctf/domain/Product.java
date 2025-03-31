@@ -1,18 +1,15 @@
 package com.qa.ctf.domain;
 
-public class Product {
+/**
+ * Represents a product with a product name.
+ * <p>
+ * This record holds the name of a product, which can be used in various parts
+ * of the application to identify or manage products.
+ * </p>
+ *
+ * @author Jagatheshwaran N
+ * @version 1.1
+ */
+public record Product(String productName) {
 
-    private String productName;
-
-    public Product(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
 }
