@@ -58,10 +58,10 @@ public class PageBase {
      */
     public void load(String endpoint) {
         try {
-            String baseUrl = FileReader.fetchDataFromPropFile("BaseURL");
+            String baseUrl = FileReader.fetchDataFromPropFile("AppURL");
             if (baseUrl == null || baseUrl.isEmpty()) {
-                log.error("Base URL is missing in the properties file.");
-                throw new ExceptionHub.InvalidDataException("Base URL cannot be null or empty.");
+                log.error("App URL is missing in the properties file.");
+                throw new ExceptionHub.InvalidDataException("App URL cannot be null or empty.");
             }
             driver.get(baseUrl + endpoint);
             log.info("Navigated to URL: {}", baseUrl + endpoint);

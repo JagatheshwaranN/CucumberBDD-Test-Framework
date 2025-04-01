@@ -1,6 +1,7 @@
-@placeOrder @reg
+@store
 Feature: Place Order
 
+  @placeOrder
   Scenario: Verify user able to place order as guest user.
     Given I'm a guest user
     And my billing details are

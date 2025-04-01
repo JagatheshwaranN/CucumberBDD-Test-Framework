@@ -1,8 +1,8 @@
-@placeOrder
+@store
 Feature: Place Order
 
-  @api @service
-  Scenario Outline: Verify user able to place order as guest user.
+  @placeOrder @api @service
+  Scenario Outline: Verify user able to place order as guest user via service.
     Given I'm a guest user
     And my billing details are
       | firstname | lastname | address_line      | city  | state | zipcode | email            |

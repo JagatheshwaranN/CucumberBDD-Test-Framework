@@ -1,8 +1,8 @@
-@placeOrder
+@store
 Feature: Place Order
 
-  @excel
-  Scenario: Verify user able to place order as guest user.
+  @placeOrder @excel
+  Scenario: Verify user able to place order as guest user by fetching data from excel.
     Given I'm a guest user
     And my billing details are taken from excel sheet "Billing Info"
     And I have a "Blue Shoes" in the cart

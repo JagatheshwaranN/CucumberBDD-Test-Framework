@@ -13,8 +13,10 @@ import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.*;
-import java.util.regex.Matcher;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**

@@ -5,9 +5,8 @@
 		<listener
 				class-name="org.uncommons.reportng.JUnitXMLReporter" />
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-<!--		<listener class-name="com.qa.ctf.listener.TestListener" />-->
 	</listeners>
-	<test name="AskOmDCh Scenario">
+	<test name="Store Scenario">
 		<classes>
 			<class name="com.qa.ctf.runner.TestNGRunnerTest" />
 		</classes>
