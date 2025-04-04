@@ -162,9 +162,6 @@ CucumberBDDTestFramework/
 │   │   │                   ├── FileReader
 │   │   │                   └── ScreenCapture
 │   └── resources/
-│       ├── config/
-│       │   ├── prod.properties
-│       │   └── stage.properties
 │       └── log4j2.properties
 ├── test/
 │   ├── java/
@@ -212,13 +209,8 @@ CucumberBDDTestFramework/
 │   │                       └── StoreSteps
 │   └── resources/
 │       ├── config/
-│       │   ├── extent.properties
-│       │   ├── cucumber.properties
-│       │   └── xml/
-│       │       ├── testNG.xml
-│       │       ├── html-config.xml
-│       │       ├── pdf-config.yaml
-│       │       └── spark-config.xml
+│       │   ├── prod.properties
+│       │   └── stage.properties
 │       ├── data/
 │       │   └── testData.xlsx
 │       ├── features/
@@ -228,7 +220,14 @@ CucumberBDDTestFramework/
 │       │   ├── PlaceOrderAsGuestByService.feature
 │       │   └── PlaceOrderWithExcelDataAsGuest.feature
 │       ├── logs/
-│       │   ├── AutomationExecution.log
-│       └── screenshots/
-|           └── 19_03_2025_11_21_07.png
+│       │   └── AutomationExecution.log
+│       ├── screenshots/
+|       |   └── 19_03_2025_11_21_07.png
+│       ├── xml/
+│       |   └── testNG.xml
+│       ├── extent.properties
+│       ├── cucumber.properties
+│       ├── html-config.xml
+│       ├── pdf-config.yaml
+│       └── spark-config.xml
 └── pom.xml
