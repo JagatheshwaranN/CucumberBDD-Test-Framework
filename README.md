@@ -1,79 +1,122 @@
-# Cucumber BDD Test Framework
+# 🖥️ Cucumber BDD Test Framework
 
-## Overview
-This repository contains a Cucumber BDD-based Automation Framework built using Java, Selenium WebDriver, and TestNG, designed to support 
-Behavior-Driven Development (BDD) for web application testing. The framework promotes collaboration between technical and non-technical 
-stakeholders through human-readable feature files, while maintaining powerful and flexible backend automation logic.
+## 📖 Overview
 
-The framework is scalable, maintainable, and designed with separation of concerns in mind. It integrates custom services, page components, 
-utility classes, and step definitions, making it adaptable to a wide range of web testing projects.
+This repository contains a Cucumber BDD-based Test Automation Framework built using Java, Selenium WebDriver, and TestNG. It supports Behavior-Driven Development (BDD) for web application testing, enabling collaboration between technical and non-technical stakeholders through human-readable feature files. The framework is modular, scalable, and maintainable, with a clear separation of concerns. It integrates custom services, utility classes, page components, and step definitions, and supports both UI and API testing, data-driven testing, and service layer validation, making it adaptable for a wide range of automation projects.
 
-## 🔑 Key Features
-🧪 Behavior-Driven Development (BDD) with Cucumber and Gherkin syntax
+---
 
-🌐 Selenium WebDriver for robust and flexible automated browser interaction
+## ✨ Key Features
 
-⚙️ Modular Page Object Model (POM) for scalable and maintainable UI automation
+🧪 **Behavior-Driven Development (BDD)** with Cucumber and Gherkin syntax  
+⚙️ **Modular Page Object Model (POM)** for UI automation  
+🔄 **Data-Driven Testing** using Excel and Custom DataTable Mappers  
+🔗 **Service Layer Support** for API interaction and validation  
+🔍 **Custom Parameter & Data Table Type Bindings** for reusable step logic  
+🧩 **Hooks and Context Management** for clean stateful execution  
+📸 **Screenshot Capture and Logging** integrated with step failures  
+📊 **Advanced Reporting** using ExtentReports  
+🔧 **Multiple Environments** via `stage.properties`, `prod.properties`  
+🚀 **TestNG and Cucumber CLI Runners** for flexible execution  
+🌐 **Selenium WebDriver** for automated browser interaction  
+🔐 **AES Encryption** for encryption and decryption of sensitive data  
 
-🔄 Data-Driven Testing using Excel sheets and Custom DataTable Mappers
+---
 
-🔗 Service Layer Support for REST API interaction and validation
+## 🔧 Prerequisites
 
-🔍 Custom Parameter & Data Table Type Bindings for reusable and readable step definitions
+Before running the framework, ensure the following tools are installed on your system:
 
-🧩 Hooks and Context Management to maintain clean, isolated test execution states
+✅ Java 11 or higher  
+✅ Maven (for dependency management)  
+✅ IDE (e.g., IntelliJ IDEA, Eclipse)  
 
-📸 Screenshot Capture and detailed logging automatically integrated with test failures
+---
 
-📊 Advanced Reporting using ExtentReports with support for HTML, PDF, and Spark themes
+## 🚀 Getting Started
 
-🔧 Multi-environment configuration support via stage.properties, prod.properties, etc.
+Follow the steps below to set up and execute your tests using the **Cucumber BDD Test Framework**.
 
-🚀 Flexible test execution using both TestNG and Cucumber CLI runners
+---
 
-🔐 AES encryption and decryption of sensitive data for secure test execution
-
-
-## ⚙️ Prerequisites
-Before getting started with the Cucumber BDD Test Framework, ensure the following tools and technologies are installed and properly 
-configured in your local environment:
-
-☕ Java 11 or higher – Required to compile and run the automation framework
-
-📦 Maven – For managing dependencies, plugins, and lifecycle
-
-🧠 IDE – Recommended: IntelliJ IDEA or Eclipse for better code navigation and debugging support
-
-🌐 Internet Connectivity – To download Maven dependencies during the first build
-
-💻 Web Browsers – Chrome, Firefox, or Edge
-
-
-## Getting Started
-
-### 1. Clone the Repository
-To get started with the framework, first clone the repository:
+### 1️⃣ Clone the Repository
 
 ```bash
-https://github.com/JagatheshwaranN/CucumberBDDTestFramework.git
+git clone https://github.com/JagatheshwaranN/CucumberBDDTestFramework.git
 ```
 
-### 2. Set Up the Project
-The project is managed by Maven. To download all necessary dependencies, navigate to the project directory and run:
-``` bash
+---
+
+### 2️⃣ Set Up the Project
+
+Navigate to the project directory and run the following Maven command:
+
+```bash
 mvn clean install
 ```
-### 3. Run Tests
-Alternatively, you can run specific TestNG XML suites for targeted test execution:
-``` bash
- mvn test -DsuiteXmlFile='testng.xml' -'Dorg.freemarker.loggerLibrary=NONE'
-```
-### 4. Generating Reports
-- Extent will generate an HTML report in the ```/resources/report``` directory after test execution.
-- TestNG will automatically generate an HTML report in the ```/test-output``` directory after test execution.
-- Additionally, screenshots will be captured for any failed test and stored in the ```/resources/screenshots``` folder.
 
-## Directory Structure
+This will download all required dependencies and compile the project.
+
+---
+
+### 3️⃣ Run Tests
+
+You can execute your tests using Maven with custom parameters:
+
+```bash
+mvn test -DBrowser=Chrome -DRunType=Local -Dorg.freemarker.loggerLibrary=NONE -DFULL_PAGE_SCREENSHOT=No
+```
+
+**Parameters:**
+- `Browser` → Specify the browser (e.g., Chrome, Firefox)  
+- `RunType` → Choose between Local or Remote execution  
+- `FULL_PAGE_SCREENSHOT` → Enable/Disable full-page screenshot capture  
+
+---
+
+### 4️⃣ Generating Reports
+
+📁 Reports and logs will be auto-generated after test execution:
+
+✅ **Cucumber HTML Report** → `/target/cucumber`  
+✅ **ExtentReports HTML Report** → `/target/reports`  
+✅ **TestNG HTML Report** → `/target/surefire-reports`  
+✅ **Screenshots for failed steps** → `/resources/screenshots`  
+✅ **Detailed Cucumber HTML Report** → `/target/cucumber-html-reports`  
+
+> 🔔 **Note:**  
+> To generate the **Detailed Cucumber Report**, use the following command:
+>
+> ```bash
+> mvn verify
+> ```
+> instead of:
+> ```bash
+> mvn test
+> ```
+
+---
+
+## 🤝 Contributions
+
+Feel free to fork the repository, raise issues, or submit pull requests to enhance the framework further!
+
+---
+
+## 🧑🏻 Maintainer
+
+Built and maintained with ❤️ by **Jagatheshwaran N**  
+GitHub: [@JagatheshwaranN](https://github.com/JagatheshwaranN)
+
+---
+
+## 📜 License
+
+This project is open-sourced under the [MIT License](LICENSE).
+
+---
+
+## 📁 Directory Structure
 
 ```plaintext
 CucumberBDDTestFramework/
