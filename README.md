@@ -1,25 +1,53 @@
 # Cucumber BDD Test Framework
 
 ## Overview
-This repository contains a Cucumber BDD Selenium Java-based Automation Framework designed to facilitate the testing of web applications. 
-The framework is adaptable to meet the requirements of any automation project.
+This repository contains a Cucumber BDD-based Automation Framework built using Java, Selenium WebDriver, and TestNG, designed to support 
+Behavior-Driven Development (BDD) for web application testing. The framework promotes collaboration between technical and non-technical 
+stakeholders through human-readable feature files, while maintaining powerful and flexible backend automation logic.
 
-## Features
-- Selenium WebDriver for automated browser interaction.
-- TestNG for managing test execution, grouping, and reporting.
-- Page Object Model (POM) design pattern for maintaining reusable and clean test code.
-- Data-Driven Testing using Excel file for passing test data.
-- Parallel Execution with TestNG to run tests across multiple browsers and configurations.
-- Screenshots capture during test execution for failure analysis.
-- Logging using Log4j for enhanced test result reporting.
-- Extent Report for customized reproting.
-- AES encryption for encryption and decryption of sensitive data.
+The framework is scalable, maintainable, and designed with separation of concerns in mind. It integrates custom services, page components, 
+utility classes, and step definitions, making it adaptable to a wide range of web testing projects.
 
-## Prerequisites
-Before running the framework, make sure to have the following installed:
-- Java 11 or higher
-- Maven (for dependency management)
-- IDE (IntelliJ Idea or Eclipse)
+## 🔑 Key Features
+🧪 Behavior-Driven Development (BDD) with Cucumber and Gherkin syntax
+
+🌐 Selenium WebDriver for robust and flexible automated browser interaction
+
+⚙️ Modular Page Object Model (POM) for scalable and maintainable UI automation
+
+🔄 Data-Driven Testing using Excel sheets and Custom DataTable Mappers
+
+🔗 Service Layer Support for REST API interaction and validation
+
+🔍 Custom Parameter & Data Table Type Bindings for reusable and readable step definitions
+
+🧩 Hooks and Context Management to maintain clean, isolated test execution states
+
+📸 Screenshot Capture and detailed logging automatically integrated with test failures
+
+📊 Advanced Reporting using ExtentReports with support for HTML, PDF, and Spark themes
+
+🔧 Multi-environment configuration support via stage.properties, prod.properties, etc.
+
+🚀 Flexible test execution using both TestNG and Cucumber CLI runners
+
+🔐 AES encryption and decryption of sensitive data for secure test execution
+
+
+## ⚙️ Prerequisites
+Before getting started with the Cucumber BDD Test Framework, ensure the following tools and technologies are installed and properly 
+configured in your local environment:
+
+☕ Java 11 or higher – Required to compile and run the automation framework
+
+📦 Maven – For managing dependencies, plugins, and lifecycle
+
+🧠 IDE – Recommended: IntelliJ IDEA or Eclipse for better code navigation and debugging support
+
+🌐 Internet Connectivity – To download Maven dependencies during the first build
+
+💻 Web Browsers – Chrome, Firefox, or Edge
+
 
 ## Getting Started
 
@@ -27,7 +55,7 @@ Before running the framework, make sure to have the following installed:
 To get started with the framework, first clone the repository:
 
 ```bash
-git clone https://github.com/JagatheshwaranN/Selenium-Test-Framework.git
+https://github.com/JagatheshwaranN/CucumberBDDTestFramework.git
 ```
 
 ### 2. Set Up the Project
